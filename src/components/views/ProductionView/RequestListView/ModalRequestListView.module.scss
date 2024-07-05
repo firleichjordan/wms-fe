@@ -1,0 +1,52 @@
+.request {
+  padding: 80px 20px;
+  &__table {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+    th,
+    td {
+      text-align: center;
+      padding: 8px;
+    }
+    thead {
+      tr {
+        background-color: #f2f2f2;
+        border-radius: 4px;
+      }
+    }
+    &__status {
+      &__accepted {
+        background-color: #2cff4c;
+        width: 60%;
+        height: 32px;
+        border: none;
+        border-radius: 18px;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        box-shadow: #ddd 0px 0px 0px 1.5px;
+      }
+      &__rejected {
+        background-color: #ff3f3f;
+        width: 60%;
+        height: 32px;
+        border: none;
+        border-radius: 16px;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        box-shadow: #ddd 0px 0px 0px 1.5px;
+      }
+      &__pending {
+        background-color: #ffe837;
+        width: 60%;
+        height: 32px;
+        border: none;
+        border-radius: 16px;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        box-shadow: #ddd 0px 0px 0px 1.5px;
+      }
+    }
+  }
+}

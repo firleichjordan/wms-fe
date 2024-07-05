@@ -1,0 +1,44 @@
+.products {
+  padding: 80px 20px;
+  &__add {
+    &:active {
+      background-color: #ff8c00;
+      color: #000;
+    }
+    margin-top: 15px;
+    i {
+      font-size: 20px;
+      margin-right: 5px;
+      font-weight: bold;
+    }
+  }
+  &__table {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+    th,
+    td {
+      text-align: center;
+      padding: 8px;
+    }
+    thead {
+      tr {
+        background-color: #f2f2f2;
+        border-radius: 4px;
+      }
+    }
+    &__request {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+
+      &__button {
+        border: 3px solid #2c3539;
+        background-color: #fff;
+        font-size: 18px;
+        color: #0099ff;
+      }
+    }
+  }
+}
