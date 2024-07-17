@@ -5,9 +5,14 @@ import { sessionContext } from "@/context/AuthContext";
 import productServices, { deleteProductData } from "@/services/product";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import styles from "./ModalDeleteProduct.module.scss";
+import ProductsType from "../../../../../../types/productTypes/ProductsType";
 
 type PropType = {
-  deleteProduct: any;
+  deleteProduct:
+    | {
+        product_id: string;
+      }
+    | ProductsType;
   setDeleteProduct: Dispatch<SetStateAction<{}>>;
   setProductsData: Dispatch<SetStateAction<any>>;
 };
@@ -19,14 +24,14 @@ const ModalDeleteProduct = (props: PropType) => {
   const { data } = sessionContext();
   const token = data.userToken?.accessToken;
 
-  console.log(deleteProduct.product_id);
+  // console.log(deleteProduct.product_id);
 
   const handleDelete = async () => {
     const result = await deleteProductData(token, deleteProduct.product_id);
     if (result) {
       setDeleteProduct(false);
       setIsLoading(false);
-      const { data }: any = await productServices.getAllProducts();
+      const data = await productServices.getAllProducts();
       setProductsData(data.data);
     } else {
       setIsLoading(false);

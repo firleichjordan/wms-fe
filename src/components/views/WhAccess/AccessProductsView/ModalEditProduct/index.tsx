@@ -5,6 +5,7 @@ import { sessionContext } from "@/context/AuthContext";
 import productServices, { updateProduct } from "@/services/product";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import styles from "./ModalEditProduct.module.scss";
+import ProductsType from "../../../../../../types/productTypes/ProductsType";
 
 type PropType = {
   editProduct: any;
@@ -22,7 +23,7 @@ const ModalEditProduct = (props: PropType) => {
   const handleEditProduct = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    const form: any = e.target as HTMLFormElement;
+    const form = e.target as HTMLFormElement | any;
     const data = {
       id: editProduct.product_id,
       name: form.name.value,
@@ -31,7 +32,7 @@ const ModalEditProduct = (props: PropType) => {
       quantity: form.quantity.value,
     };
 
-    updateProduct(token, data, async (status: any, res: any) => {
+    updateProduct(token, data, async (status: boolean, res: string) => {
       if (status) {
         setEditProduct(false);
         setIsLoading(false);

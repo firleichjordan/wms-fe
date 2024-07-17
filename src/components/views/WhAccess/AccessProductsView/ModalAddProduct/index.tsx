@@ -5,6 +5,7 @@ import { sessionContext } from "@/context/AuthContext";
 import productServices, { addProduct } from "@/services/product";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import styles from "./ModalAddProduct.module.scss";
+import AddProductTypes from "../../../../../../types/productTypes/AddProductTypes";
 
 type PropType = {
   setModalAddProduct: Dispatch<SetStateAction<boolean>>;
@@ -20,13 +21,13 @@ const ModalAddProduct = (props: PropType) => {
 
   // console.log(token);
 
-  const handleAddProduct = async (data: any) => {
-    addProduct(token, data, async (status: any, res: any) => {
+  const handleAddProduct = async (data: AddProductTypes) => {
+    addProduct(token, data, async (status: boolean, res: string) => {
       if (status) {
         setModalAddProduct(false);
         setIsLoading(false);
         // window.location.reload();
-        const { data }: any = await productServices.getAllProducts();
+        const data = await productServices.getAllProducts();
         setProductsData(data.data);
       } else {
         setIsLoading(false);
@@ -39,7 +40,7 @@ const ModalAddProduct = (props: PropType) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    const form: any = e.target as HTMLFormElement;
+    const form = e.target as HTMLFormElement | any;
 
     const data = {
       name: form.name.value,

@@ -1,9 +1,14 @@
 import instance from "@/lib/axios/instance";
 import axios from "axios";
+import SignUpTypes from "../../../types/userTypes/SignUpTypes";
+import SignInTypes from "../../../types/userTypes/SignInTypes";
+import UpdateUserTypes from "../../../types/userTypes/UpdateUserTypes";
+import UpdatePasswordTypes from "../../../types/userTypes/UpdatePasswordTypes";
 
 export const authServices = {
-  registerAccount: (data: any) => instance.post("/api/user/register", data),
-  signIn: (data: any) => instance.post("/api/user/login", data),
+  registerAccount: (data: SignUpTypes) =>
+    instance.post("/api/user/register", data),
+  signIn: (data: SignInTypes) => instance.post("/api/user/login", data),
   getAllusers: () => instance.get("/api/user/production"),
 };
 
@@ -28,7 +33,7 @@ export const getDetailUser = async (token: string) => {
 
 export const updateUser = async (
   token: string,
-  data: any,
+  data: UpdateUserTypes,
   callback: Function
 ) => {
   try {
@@ -49,7 +54,7 @@ export const updateUser = async (
 
 export const uploadAvatar = async (
   token: string,
-  data: any,
+  data: File,
   callback: Function
 ) => {
   const form = new FormData();
@@ -74,7 +79,7 @@ export const uploadAvatar = async (
   }
 };
 
-export const updateAvatar = async (token: string, data: any) => {
+export const updateAvatar = async (token: string, data: File) => {
   try {
     const form = new FormData();
     form.append("image", data);
@@ -94,7 +99,10 @@ export const updateAvatar = async (token: string, data: any) => {
   }
 };
 
-export const updatePassword = async (token: string, data: any) => {
+export const updatePassword = async (
+  token: string,
+  data: UpdatePasswordTypes
+) => {
   try {
     const config = {
       headers: { Authorization: `Bearer ${token}` },

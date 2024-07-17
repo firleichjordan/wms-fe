@@ -4,9 +4,9 @@ import styles from "./Home.module.scss";
 const HomePage = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.container__title}>
+      {/* <div className={styles.container__title}>
         <h1>WAREHOUSE MANAGEMENT SYSTEM</h1>
-      </div>
+      </div> */}
       <div className={styles.container__content}>
         <div className={styles.container__content__img}>
           <Image
@@ -17,18 +17,10 @@ const HomePage = () => {
           />
         </div>
         <div className={styles.container__content__text}>
-          <h2 className={styles.container__content__text__title}>
-            Welcome to Warehouse Management System
-          </h2>
-          {/* <h2 className={styles.container__content__text__subtitle}>We</h2>
-          <p className={styles.container__content__text__sentence}>Save</p>
-          <p className={styles.container__content__text__sentence}>Organize</p>
+          <h1 className={styles.container__content__text__title}>WMS</h1>
           <p className={styles.container__content__text__sentence}>
-            Distribute
+            Save | Organize | Distribute
           </p>
-          <p className={styles.container__content__text__sentence}>
-            For smooth systematic warehouse management
-          </p> */}
         </div>
       </div>
     </div>

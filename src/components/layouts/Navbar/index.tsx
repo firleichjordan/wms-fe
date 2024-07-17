@@ -3,6 +3,8 @@ import styles from "./Navbar.module.scss";
 import { useRouter } from "next/router";
 import WarehouseMenu from "@/components/ui/Menu/Warehouse";
 import ProductionMenu from "@/components/ui/Menu/Production";
+import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   const { isAuthenticated, loginContext, logoutContext, data, dataRole } =
@@ -15,7 +17,10 @@ const Navbar = () => {
     <>
       <div className={styles.navbar}>
         <h1 className={styles.navbar__logo}>
-          <i className="bx bxl-squarespace"></i>
+          <Link href="/" className={styles.navbar__logo__link}>
+            <Image src="/wmsico.png" alt="Vercel Logo" width={60} height={60} />
+          </Link>
+          {/* <i className="bx bxl-squarespace"></i> */}
         </h1>
         <div>
           {isAuthenticated ? (

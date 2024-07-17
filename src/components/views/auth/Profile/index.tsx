@@ -6,7 +6,7 @@ import {
   updateUser,
   uploadAvatar,
 } from "@/services/auth";
-import { FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import styles from "./Profile.module.scss";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -27,23 +27,25 @@ const ProfileView = () => {
     detailUser();
   }, []);
 
-  const handleUploadFile = (e: any) => {
-    const file = e.target.files;
+  const handleUploadFile = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    // const file = e.target.files;
+    const file = (e.target as HTMLInputElement).files;
     const test = file?.[0];
     setSelectedFile(test);
   };
 
   // console.log(selectedFile);
 
-  const handleUpload = async (e: any) => {
+  const handleUpload = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (selectedFile) {
       const result = await uploadAvatar(
         token,
         selectedFile,
-        (status: any, res: any) => {
-          // console.log(status);
+        (status: boolean, res: string) => {
+          console.log(status);
           if (status) {
             alert("File uploaded successfully");
             window.location.reload();
@@ -52,16 +54,17 @@ const ProfileView = () => {
           }
         }
       );
-      console.log(result);
+      // console.log(result);
+      return result;
     } else {
       return null;
     }
   };
 
-  const handleUpdateAvatar = async (e: any) => {
+  const handleUpdateAvatar = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (selectedFile) {
-      const result: any = await updateAvatar(token, selectedFile);
+      const result = await updateAvatar(token, selectedFile);
       if (result) {
         alert("Avatar updated successfully");
         window.location.reload();
@@ -80,7 +83,7 @@ const ProfileView = () => {
       username: form.username.value,
       email: form.email.value,
     };
-    await updateUser(token, dataForm, (status: any, res: any) => {
+    await updateUser(token, dataForm, (status: boolean, res: string) => {
       if (status) {
         setDataProfile({
           ...dataProfile,
@@ -103,9 +106,8 @@ const ProfileView = () => {
     };
 
     try {
-      const result: any = await updatePassword(token, dataForm);
-      console.log(result.status === 201);
-      if (result.status === 201) {
+      const result = await updatePassword(token, dataForm);
+      if (result) {
         alert("Password updated successfully");
         form.reset();
       } else {

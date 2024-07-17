@@ -1,6 +1,7 @@
 import { sessionContext } from "@/context/AuthContext";
 import instance from "@/lib/axios/instance";
 import axios from "axios";
+import AddProductTypes from "../../../types/productTypes/AddProductTypes";
 
 // const { data } = sessionContext();
 // const token = data.userToken?.accessToken;
@@ -16,7 +17,11 @@ const productServices = {
 
 export default productServices;
 
-export const addProduct = async (token: string, data: any, callback: any) => {
+export const addProduct = async (
+  token: string,
+  data: AddProductTypes,
+  callback: Function
+) => {
   try {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
