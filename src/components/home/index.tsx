@@ -14,6 +14,7 @@ const HomePage = () => {
             alt="Vercel Logo"
             width={400}
             height={400}
+            priority
           />
         </div>
         <div className={styles.container__content__text}>

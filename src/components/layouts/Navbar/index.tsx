@@ -18,7 +18,13 @@ const Navbar = () => {
       <div className={styles.navbar}>
         <h1 className={styles.navbar__logo}>
           <Link href="/" className={styles.navbar__logo__link}>
-            <Image src="/wmsico.png" alt="Vercel Logo" width={60} height={60} />
+            <Image
+              src="/wmsico.png"
+              alt="Vercel Logo"
+              width={60}
+              height={60}
+              priority
+            />
           </Link>
           {/* <i className="bx bxl-squarespace"></i> */}
         </h1>
