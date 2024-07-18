@@ -7,7 +7,7 @@ const RequestsListPage = () => {
   const [requests, setRequests] = useState<RequestsType[]>([]);
 
   const getAllRequestByUser = async () => {
-    const data = await requestServices.getAllRequestByUser();
+    const { data } = await requestServices.getAllRequestByUser();
     setRequests(data.data);
   };
 
