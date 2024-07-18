@@ -19,7 +19,7 @@ const Navbar = () => {
         <h1 className={styles.navbar__logo}>
           <Link href="/" className={styles.navbar__logo__link}>
             <Image
-              src="/wmsico.png"
+              src="/wmsicon.png"
               alt="Vercel Logo"
               width={60}
               height={60}
