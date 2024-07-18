@@ -4,11 +4,12 @@ import styles from "./ModalUpdateRequest.module.scss";
 import { sessionContext } from "@/context/AuthContext";
 import requestServices, { updateStatusRequest } from "@/services/request";
 import Button from "@/components/ui/Button";
+import RequestsType from "../../../../../../types/requestTypes/RequestsType";
 
 type PropTypes = {
-  updateRequest: any;
+  updateRequest: RequestsType;
   setUpdateRequest: Dispatch<SetStateAction<boolean>>;
-  setRequestsData: Dispatch<SetStateAction<any>>;
+  setRequestsData: Dispatch<SetStateAction<RequestsType[]>>;
 };
 
 const ModalUpdateRequest = (props: PropTypes) => {
@@ -23,13 +24,13 @@ const ModalUpdateRequest = (props: PropTypes) => {
   const handleUpdateStatusRequest = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    const from: any = e.target as HTMLFormElement;
+    const from = e.target as HTMLFormElement;
     const data = {
       id: updateRequest.request_id,
       status: from.status.value,
     };
 
-    updateStatusRequest(token, data, async (status: any, res: any) => {
+    updateStatusRequest(token, data, async (status: boolean, res: string) => {
       if (status) {
         setUpdateRequest(false);
         setIsLoading(false);

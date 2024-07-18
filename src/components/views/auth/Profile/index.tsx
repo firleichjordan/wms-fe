@@ -10,11 +10,12 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import styles from "./Profile.module.scss";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+import UserTypes from "../../../../../types/userTypes/UserTypes";
 
 const ProfileView = () => {
-  const [user, setUser] = useState<any>({});
+  const [user, setUser] = useState<UserTypes | any>({});
   const [selectedFile, setSelectedFile] = useState<File | any>("");
-  const [dataProfile, setDataProfile] = useState<any>({});
+  const [dataProfile, setDataProfile] = useState<UserTypes | any>({});
   const { data } = sessionContext();
   const token = data.userToken?.accessToken;
 

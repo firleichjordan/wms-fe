@@ -14,7 +14,7 @@ type PropType = {
       }
     | ProductsType;
   setDeleteProduct: Dispatch<SetStateAction<{}>>;
-  setProductsData: Dispatch<SetStateAction<any>>;
+  setProductsData: Dispatch<SetStateAction<{}>>;
 };
 
 const ModalDeleteProduct = (props: PropType) => {
@@ -27,7 +27,10 @@ const ModalDeleteProduct = (props: PropType) => {
   // console.log(deleteProduct.product_id);
 
   const handleDelete = async () => {
-    const result = await deleteProductData(token, deleteProduct.product_id);
+    const result = await deleteProductData(
+      token,
+      deleteProduct.product_id as string
+    );
     if (result) {
       setDeleteProduct(false);
       setIsLoading(false);

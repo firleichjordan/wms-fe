@@ -5,11 +5,12 @@ import { sessionContext } from "@/context/AuthContext";
 import productServices from "@/services/product";
 import { createRequest } from "@/services/request";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import ProductsType from "../../../../../types/productTypes/ProductsType";
 
 type PropTypes = {
   requestProduct: any;
   setRequestProduct: Dispatch<SetStateAction<boolean>>;
-  setProductsData: Dispatch<SetStateAction<any>>;
+  setProductsData: Dispatch<SetStateAction<ProductsType[]>>;
 };
 
 const ModalRequestProduct = (props: PropTypes) => {
@@ -25,14 +26,14 @@ const ModalRequestProduct = (props: PropTypes) => {
   const handleRequestProduct = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    const form: any = e.target as HTMLFormElement;
+    const form = e.target as HTMLFormElement;
     const data = {
       id: requestProduct.product_id,
       quantity: form.quantity.value,
     };
 
     // console.log(data);
-    createRequest(token, data, async (status: any, res: any) => {
+    createRequest(token, data, async (status: boolean, res: string) => {
       if (status) {
         setRequestProduct(false);
         setIsLoading(false);

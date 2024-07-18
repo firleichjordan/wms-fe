@@ -4,7 +4,7 @@ import Button from "@/components/ui/Button";
 import ModalRequestProduct from "./ModalRequestProduct";
 
 type ProductsType = {
-  products: any;
+  products: ProductsType[] | any;
 };
 
 const ProductView = (props: ProductsType) => {
@@ -34,7 +34,7 @@ const ProductView = (props: ProductsType) => {
             </tr>
           </thead>
           <tbody>
-            {productsData.map((product: any, index: any) => (
+            {productsData?.map((product: any, index: any) => (
               <Fragment key={product._id}>
                 <tr>
                   <td>{index + 1}</td>

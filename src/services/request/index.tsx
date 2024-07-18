@@ -1,9 +1,12 @@
 import instance from "@/lib/axios/instance";
 import axios from "axios";
+import RequestsType from "../../../types/requestTypes/RequestsType";
+import StatusrequestTypes from "../../../types/requestTypes/StatusRequestTypes";
+import UserRequestType from "../../../types/requestTypes/UserRequestType";
 
 const requestServices = {
   getAllRequests: () => instance.get("/api/request"),
-  getAllRequestByUser: (data?: any) =>
+  getAllRequestByUser: (data?: RequestsType) =>
     instance.get("/api/request/user/id", { data }),
 };
 
@@ -11,7 +14,7 @@ export default requestServices;
 
 export const updateStatusRequest = async (
   token: string,
-  data: any,
+  data: StatusrequestTypes,
   callback: Function
 ) => {
   try {
@@ -32,7 +35,7 @@ export const updateStatusRequest = async (
 
 export const createRequest = async (
   token: string,
-  data: any,
+  data: UserRequestType,
   callback: Function
 ) => {
   try {

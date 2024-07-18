@@ -1,14 +1,15 @@
 import { Fragment, useEffect, useState } from "react";
 import styles from "./ModalRequestListView.module.scss";
+import RequestsType from "../../../../../types/requestTypes/RequestsType";
 
 type PropTypes = {
-  requests: any;
+  requests: RequestsType[];
 };
 
 const RequestListView = (props: PropTypes) => {
   const { requests } = props;
 
-  const [requestData, setRequestData] = useState<any>([]);
+  const [requestData, setRequestData] = useState<RequestsType[]>([]);
 
   useEffect(() => {
     setRequestData(requests);
@@ -32,7 +33,7 @@ const RequestListView = (props: PropTypes) => {
             </tr>
           </thead>
           <tbody>
-            {requestData.map((request: any, index: any) => (
+            {requestData.map((request: RequestsType, index: number) => (
               <Fragment key={request._id}>
                 <tr>
                   <td>{index + 1}</td>

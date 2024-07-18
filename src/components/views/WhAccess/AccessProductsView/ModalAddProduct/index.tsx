@@ -6,10 +6,11 @@ import productServices, { addProduct } from "@/services/product";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import styles from "./ModalAddProduct.module.scss";
 import AddProductTypes from "../../../../../../types/productTypes/AddProductTypes";
+import ProductsType from "../../../../../../types/productTypes/ProductsType";
 
 type PropType = {
   setModalAddProduct: Dispatch<SetStateAction<boolean>>;
-  setProductsData: Dispatch<SetStateAction<any>>;
+  setProductsData: Dispatch<SetStateAction<ProductsType[]>>;
 };
 
 const ModalAddProduct = (props: PropType) => {

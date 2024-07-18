@@ -8,9 +8,9 @@ import styles from "./ModalEditProduct.module.scss";
 import ProductsType from "../../../../../../types/productTypes/ProductsType";
 
 type PropType = {
-  editProduct: any;
+  editProduct: ProductsType;
   setEditProduct: Dispatch<SetStateAction<boolean>>;
-  setProductsData: Dispatch<SetStateAction<any>>;
+  setProductsData: Dispatch<SetStateAction<ProductsType[]>>;
 };
 
 const ModalEditProduct = (props: PropType) => {

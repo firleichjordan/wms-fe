@@ -1,9 +1,10 @@
 import { AccessRequestsView } from "@/components/views/WhAccess/AccessRequestsView";
 import requestServices from "@/services/request";
 import { useEffect, useState } from "react";
+import RequestsType from "../../../../types/requestTypes/RequestsType";
 
 const AccessRequestsPage = () => {
-  const [requests, setRequests] = useState<any>([]);
+  const [requests, setRequests] = useState<RequestsType[]>([]);
 
   const getRequestsData = async () => {
     const { data } = await requestServices.getAllRequests();

@@ -1,17 +1,17 @@
 import { Fragment, useEffect, useState } from "react";
 import styles from "./AccessRequestsView.module.scss";
-import Button from "@/components/ui/Button";
 import ModalUpdateRequest from "./ModalUpdateRequest";
+import RequestsType from "../../../../../types/requestTypes/RequestsType";
 
 type PropTypes = {
-  requests: any;
+  requests: RequestsType[];
 };
 
 export const AccessRequestsView = (props: PropTypes) => {
   const { requests } = props;
 
-  const [requestsData, setRequestsData] = useState<any>([]);
-  const [updateRequest, setUpdateRequest] = useState<any | {}>({});
+  const [requestsData, setRequestsData] = useState<RequestsType[]>([]);
+  const [updateRequest, setUpdateRequest] = useState<RequestsType | any>({});
 
   useEffect(() => {
     setRequestsData(requests);
@@ -39,7 +39,7 @@ export const AccessRequestsView = (props: PropTypes) => {
             </tr>
           </thead>
           <tbody>
-            {requestsData.map((request: any, index: any) => (
+            {requestsData.map((request: RequestsType, index: number) => (
               <Fragment key={request._id}>
                 <tr>
                   <td>{index + 1}</td>

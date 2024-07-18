@@ -24,7 +24,7 @@ const LoginView = () => {
     };
     try {
       const result = await authServices.signIn(data);
-      console.log(result);
+      // console.log(result);
       if (result.status == 200) {
         setLoading(false);
         loginContext(result.data.dataToken, result.data.userData);

@@ -9,9 +9,9 @@ import { useEffect, useState } from "react";
 
 const AllRequestsByUserId = () => {
   const router = useRouter();
-  const { id }: any = router.query;
+  const { id } = router.query as { id: string };
 
-  const [requests, setRequests] = useState<any>([]);
+  // const [requests, setRequests] = useState<any>([]);
   // const { data } = sessionContext();
   // const token = data.userToken?.accessToken;
 

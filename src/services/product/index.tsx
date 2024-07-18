@@ -2,6 +2,7 @@ import { sessionContext } from "@/context/AuthContext";
 import instance from "@/lib/axios/instance";
 import axios from "axios";
 import AddProductTypes from "../../../types/productTypes/AddProductTypes";
+import ProductsType from "../../../types/productTypes/ProductsType";
 
 // const { data } = sessionContext();
 // const token = data.userToken?.accessToken;
@@ -12,7 +13,6 @@ import AddProductTypes from "../../../types/productTypes/AddProductTypes";
 
 const productServices = {
   getAllProducts: () => instance.get("/api/product"),
-  // addProduct: (data: any) => instance.post("/api/product/add", data),
 };
 
 export default productServices;
@@ -39,7 +39,7 @@ export const addProduct = async (
 
 export const updateProduct = async (
   token: string,
-  data: any,
+  data: ProductsType,
   callback: Function
 ) => {
   try {

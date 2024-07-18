@@ -2,10 +2,11 @@ import { AccessUsersView } from "@/components/views/WhAccess/AccessUsersView";
 import { authServices } from "@/services/auth";
 import requestServices from "@/services/request";
 import { useEffect, useState } from "react";
+import RequestsType from "../../../../types/requestTypes/RequestsType";
 
 const AccessUsersPage = () => {
   const [users, setUsers] = useState([]);
-  const [requests, setRequests] = useState<any>([]);
+  const [requests, setRequests] = useState<RequestsType[]>([]);
 
   const dataAllUsers = async () => {
     const { data } = await authServices.getAllusers();
